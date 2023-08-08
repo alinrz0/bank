@@ -1,14 +1,145 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="bank.MainPageController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="394.0" prefWidth="790.0" style="-fx-background-color: #110063;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bank.MainPageController">
+   <children>
+      <ImageView fitHeight="400.0" fitWidth="790.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/4585326-banque-batiment-entreprise-finance-gestion-low-poly-wireframe-vector-illustration-isolated-background-gratuit-vectoriel.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="210.0" layoutY="14.0" prefHeight="34.0" prefWidth="142.0" text="Acoount id :" textFill="#c7c7c7">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Label>
+      <TabPane layoutY="56.0" prefHeight="338.0" prefWidth="790.0" styleClass="tab-header-area" stylesheets="@../css/style.css" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="deposite">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="154.0" layoutY="14.0" prefHeight="46.0" prefWidth="135.0" text="Deposite" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold Italic" size="30.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="amountTextFieldDeposite" layoutX="127.0" layoutY="118.0" prefHeight="40.0" prefWidth="172.0" promptText="amount" style="-fx-background-color: #39197B;">
+                           <font>
+                              <Font name="System Bold Italic" size="18.0" />
+                           </font>
+                        </TextField>
+                        <JFXButton fx:id="doneButtonDeposit" layoutX="166.0" layoutY="173.0" onAction="#pressDoneButtonDeposit" prefHeight="43.0" prefWidth="94.0" text="Done" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold Italic" size="20.0" />
+                           </font>
+                        </JFXButton>
+                        <Label fx:id="errorLabelDeposite" alignment="CENTER" layoutX="13.0" layoutY="247.0" prefHeight="27.0" prefWidth="410.0" textFill="#942424">
+                           <font>
+                              <Font name="System Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="withdraw">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="149.0" layoutY="14.0" prefHeight="46.0" prefWidth="142.0" text="Withdraw" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold Italic" size="30.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="amountTextFieldWithdraw" layoutX="134.0" layoutY="113.0" prefHeight="40.0" prefWidth="172.0" promptText="amount" style="-fx-background-color: #39197B;">
+                           <font>
+                              <Font name="System Bold Italic" size="18.0" />
+                           </font>
+                        </TextField>
+                        <JFXButton fx:id="doneButtonWithraw" layoutX="170.0" layoutY="169.0" onAction="#pressDoneButtonWithdrwa" prefHeight="43.0" prefWidth="94.0" text="Done" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold Italic" size="20.0" />
+                           </font>
+                        </JFXButton>
+                        <Label fx:id="errorLabelWithdraw" alignment="CENTER" layoutX="15.0" layoutY="246.0" prefHeight="27.0" prefWidth="410.0" textFill="#942424">
+                           <font>
+                              <Font name="System Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="transfer">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="160.0" layoutY="14.0" prefHeight="46.0" prefWidth="135.0" text="Transfer" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold Italic" size="30.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="amountTextFieldTransfer" layoutX="141.0" layoutY="133.0" prefHeight="40.0" prefWidth="197.0" promptText="amount" style="-fx-background-color: #39197B;">
+                           <font>
+                              <Font name="System Bold Italic" size="18.0" />
+                           </font>
+                        </TextField>
+                        <JFXButton fx:id="doneButtonTransfer" layoutX="171.0" layoutY="184.0" onAction="#pressDoneButtonTransfer" prefHeight="43.0" prefWidth="94.0" text="Done" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold Italic" size="20.0" />
+                           </font>
+                        </JFXButton>
+                        <TextField fx:id="idTextFieldTransfer" layoutX="142.0" layoutY="81.0" prefHeight="40.0" prefWidth="196.0" promptText="Destination account id" style="-fx-background-color: #39197B;">
+                           <font>
+                              <Font name="System Bold Italic" size="16.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="transactions">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <JFXListView fx:id="listViewTransactions" layoutX="85.0" layoutY="52.0" prefHeight="250.0" prefWidth="310.0" style="-fx-background-color: #39197B;" visible="false" />
+                        <JFXButton fx:id="transactionsButton" layoutX="159.0" layoutY="14.0" onAction="#pressTransactionsButton" prefHeight="27.0" prefWidth="154.0" text="Transactions" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold Italic" size="20.0" />
+                           </font>
+                        </JFXButton>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+      <JFXButton fx:id="exitButton" layoutY="-1.0" onAction="#pressExitButton" text="Exit" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="logOutButton" layoutX="669.0" layoutY="-1.0" onAction="#pressLogOutButton" prefHeight="43.0" prefWidth="106.0" text="Log Out" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font>
+      </JFXButton>
+      <Label fx:id="idLabel" layoutX="325.0" layoutY="17.0" prefHeight="27.0" prefWidth="142.0" textFill="#c7c7c7">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Label>
+   </children>
 </AnchorPane>
