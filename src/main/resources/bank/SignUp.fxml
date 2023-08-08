@@ -18,12 +18,12 @@
             <Font name="System Bold Italic" size="28.0" />
          </font>
       </Label>
-      <TextField fx:id="usernameTextField" layoutX="58.0" layoutY="128.0" prefHeight="37.0" prefWidth="198.0" promptText="fiirstname" style="-fx-background-color: #110050;" styleClass="custom-textfield" stylesheets="@../css/textcolor.css">
+      <TextField fx:id="firstnameTextField" layoutX="58.0" layoutY="128.0" prefHeight="37.0" prefWidth="198.0" promptText="firstname" style="-fx-background-color: #110050;" styleClass="custom-textfield" stylesheets="@../css/style.css">
          <font>
             <Font name="System Bold Italic" size="16.0" />
          </font>
       </TextField>
-      <PasswordField fx:id="passwordField" layoutX="58.0" layoutY="419.0" prefHeight="38.0" prefWidth="198.0" promptText="password" style="-fx-background-color: #110050;" styleClass="custom-textfield" stylesheets="@../css/textcolor.css">
+      <PasswordField fx:id="passwordField" layoutX="58.0" layoutY="419.0" prefHeight="38.0" prefWidth="198.0" promptText="password" style="-fx-background-color: #110050;" styleClass="custom-textfield" stylesheets="@../css/style.css">
          <font>
             <Font name="System Bold Italic" size="16.0" />
          </font>
@@ -33,47 +33,52 @@
             <Font name="System Bold Italic" size="22.0" />
          </font>
       </JFXButton>
-      <TextField fx:id="usernameTextField1" layoutX="58.0" layoutY="202.0" prefHeight="37.0" prefWidth="198.0" promptText="email" style="-fx-background-color: #110050;" styleClass="custom-textfield" stylesheets="@../css/textcolor.css">
+      <TextField fx:id="emailTextField" layoutX="58.0" layoutY="202.0" prefHeight="37.0" prefWidth="198.0" promptText="email" style="-fx-background-color: #110050;" styleClass="custom-textfield" stylesheets="@../css/style.css">
          <font>
             <Font name="System Bold Italic" size="16.0" />
          </font>
       </TextField>
-      <TextField fx:id="usernameTextField11" layoutX="58.0" layoutY="277.0" prefHeight="37.0" prefWidth="198.0" promptText="age" style="-fx-background-color: #110050;" styleClass="custom-textfield" stylesheets="@../css/textcolor.css">
+      <TextField fx:id="ageTextField" layoutX="58.0" layoutY="277.0" prefHeight="37.0" prefWidth="198.0" promptText="age" style="-fx-background-color: #110050;" styleClass="custom-textfield" stylesheets="@../css/style.css">
          <font>
             <Font name="System Bold Italic" size="16.0" />
          </font>
       </TextField>
-      <TextField fx:id="usernameTextField1111" layoutX="311.0" layoutY="128.0" prefHeight="37.0" prefWidth="198.0" promptText="lastname" style="-fx-background-color: #110050;" styleClass="custom-textfield" stylesheets="@../css/textcolor.css">
+      <TextField fx:id="lastnameTextField" layoutX="311.0" layoutY="128.0" prefHeight="37.0" prefWidth="198.0" promptText="lastname" style="-fx-background-color: #110050;" styleClass="custom-textfield" stylesheets="@../css/style.css">
          <font>
             <Font name="System Bold Italic" size="16.0" />
          </font>
       </TextField>
-      <PasswordField fx:id="passwordField1" layoutX="311.0" layoutY="419.0" prefHeight="38.0" prefWidth="198.0" promptText="password" style="-fx-background-color: #110050;" styleClass="custom-textfield" stylesheets="@../css/textcolor.css">
+      <PasswordField fx:id="repeatPasswordField" layoutX="311.0" layoutY="419.0" prefHeight="38.0" prefWidth="198.0" promptText="repeat password" style="-fx-background-color: #110050;" styleClass="custom-textfield" stylesheets="@../css/style.css">
          <font>
             <Font name="System Bold Italic" size="16.0" />
          </font>
       </PasswordField>
-      <TextField fx:id="usernameTextField11111" layoutX="311.0" layoutY="202.0" prefHeight="37.0" prefWidth="198.0" promptText="phone" style="-fx-background-color: #110050;" styleClass="custom-textfield" stylesheets="@../css/textcolor.css">
+      <TextField fx:id="phoneTextField" layoutX="311.0" layoutY="202.0" prefHeight="37.0" prefWidth="198.0" promptText="phone" style="-fx-background-color: #110050;" styleClass="custom-textfield" stylesheets="@../css/style.css">
          <font>
             <Font name="System Bold Italic" size="16.0" />
          </font>
       </TextField>
-      <TextField fx:id="usernameTextField111111" layoutX="311.0" layoutY="277.0" prefHeight="37.0" prefWidth="198.0" promptText="username" style="-fx-background-color: #110050;" styleClass="custom-textfield" stylesheets="@../css/textcolor.css">
+      <TextField fx:id="usernameTextField" layoutX="311.0" layoutY="277.0" prefHeight="37.0" prefWidth="198.0" promptText="username" style="-fx-background-color: #110050;" styleClass="custom-textfield" stylesheets="@../css/style.css">
          <font>
             <Font name="System Bold Italic" size="16.0" />
          </font>
       </TextField>
-      <JFXComboBox focusColor="WHITE" layoutX="311.0" layoutY="348.0" prefHeight="38.0" prefWidth="198.0" promptText="gender" style="-fx-background-color: #110050;" stylesheets="@../css/textcolor.css" unFocusColor="#110050">
+      <JFXComboBox fx:id="genderComboBox" focusColor="WHITE" layoutX="311.0" layoutY="348.0" prefHeight="38.0" prefWidth="198.0" promptText="gender" style="-fx-background-color: #110050;" stylesheets="@../css/style.css" unFocusColor="#110050">
          <styleClass>
             <String fx:value="custom-combobox" />
             <String fx:value="custom-combobox" />
          </styleClass>
       </JFXComboBox>
-      <DatePicker layoutX="58.0" layoutY="348.0" prefHeight="38.0" prefWidth="198.0" promptText="birthday" style="-fx-background-color: #110050;" stylesheets="@../css/textcolor.css">
+      <DatePicker fx:id="birthdayPicker" layoutX="58.0" layoutY="348.0" prefHeight="38.0" prefWidth="198.0" promptText="birthday" style="-fx-background-color: #110050;" stylesheets="@../css/style.css">
          <styleClass>
             <String fx:value="date-picker" />
             <String fx:value="custom-combobox" />
          </styleClass>
       </DatePicker>
+      <Label fx:id="errorLabel" alignment="CENTER" layoutX="46.0" layoutY="556.0" prefHeight="38.0" prefWidth="458.0" textFill="#b42727">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

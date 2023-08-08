@@ -1,39 +1,51 @@
 package bank;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 public class SignUpController {
 
     @FXML
+    private TextField ageTextField;
+
+    @FXML
+    private DatePicker birthdayPicker;
+
+    @FXML
+    private TextField emailTextField;
+
+    @FXML
+    private Label errorLabel;
+
+    @FXML
+    private TextField firstnameTextField;
+
+    @FXML
+    private JFXComboBox<?> genderComboBox;
+
+    @FXML
+    private TextField lastnameTextField;
+
+    @FXML
     private PasswordField passwordField;
 
     @FXML
-    private PasswordField passwordField1;
+    private TextField phoneTextField;
+
+    @FXML
+    private PasswordField repeatPasswordField;
 
     @FXML
     private JFXButton singUpButton;
 
     @FXML
     private TextField usernameTextField;
-
-    @FXML
-    private TextField usernameTextField1;
-
-    @FXML
-    private TextField usernameTextField11;
-
-    @FXML
-    private TextField usernameTextField1111;
-
-    @FXML
-    private TextField usernameTextField11111;
-
-    @FXML
-    private TextField usernameTextField111111;
 
     @FXML
     void pressSingUpButton(ActionEvent event) {
