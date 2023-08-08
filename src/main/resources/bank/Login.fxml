@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="411.0" prefWidth="732.0" style="-fx-background-color: #0E0052 #3070ff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bank.LoginController">
+   <children>
+      <ImageView fitHeight="533.0" fitWidth="735.0" layoutX="-3.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/fingerprint-identity-sensor-data-protection-system-podium-hologram-blue-light-and-concept-free-vector.jpg" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="364.0" layoutY="34.0" prefHeight="352.0" prefWidth="336.0" style="-fx-background-color: #110063; -fx-border-width: 4px; -fx-border-color: #5f5500; -fx-border-radius: 5px;">
+         <children>
+            <ImageView fitHeight="31.0" fitWidth="33.0" layoutX="47.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/user.png" />
+               </image>
+            </ImageView>
+            <JFXButton fx:id="loginButton" layoutX="154.0" layoutY="200.0" onAction="#pressLoginButton" text="Login" textFill="#fff5f5">
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="singUpButton" layoutX="225.0" layoutY="286.0" onAction="#pressSingUpButton" text="Sign Up" textFill="#fffbfb">
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font>
+            </JFXButton>
+            <RadioButton fx:id="managerRadioButton" layoutX="14.0" layoutY="83.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="82.0" text="Manager" textFill="#fff8f8">
+               <font>
+                  <Font name="System Bold Italic" size="13.0" />
+               </font>
+            </RadioButton>
+            <RadioButton fx:id="clientRadioButton" layoutX="14.0" layoutY="57.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="82.0" selected="true" text="Client" textFill="#fff8f8">
+               <font>
+                  <Font name="System Bold Italic" size="13.0" />
+               </font>
+            </RadioButton>
+            <TextField fx:id="usernameTextField" layoutX="91.0" layoutY="115.0" prefHeight="12.0" prefWidth="197.0" promptText="username" style="-fx-background-color: #110080;" styleClass="custom-textfield" stylesheets="@../css/textcolor.css">
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font>
+            </TextField>
+            <Label layoutX="132.0" layoutY="14.0" text="Login" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="28.0" />
+               </font>
+            </Label>
+            <Label layoutX="29.0" layoutY="293.0" text="do not have an accoun?" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+            </Label>
+            <PasswordField fx:id="passwordField" layoutX="90.0" layoutY="168.0" prefHeight="26.0" prefWidth="198.0" promptText="password" style="-fx-background-color: #110080;" styleClass="custom-textfield" stylesheets="@../css/textcolor.css">
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font>
+            </PasswordField>
+            <ImageView fitHeight="31.0" fitWidth="33.0" layoutX="47.0" layoutY="168.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/key.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
