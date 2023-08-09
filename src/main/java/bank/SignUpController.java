@@ -12,9 +12,6 @@ import javafx.scene.control.TextField;
 public class SignUpController {
 
     @FXML
-    private TextField ageTextField;
-
-    @FXML
     private DatePicker birthdayPicker;
 
     @FXML
@@ -27,7 +24,10 @@ public class SignUpController {
     private TextField firstnameTextField;
 
     @FXML
-    private JFXComboBox<?> genderComboBox;
+    private JFXComboBox<String> genderComboBox;
+
+    @FXML
+    private TextField idTextField;
 
     @FXML
     private TextField lastnameTextField;
