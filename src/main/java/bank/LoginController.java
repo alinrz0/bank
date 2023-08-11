@@ -68,4 +68,8 @@ public class LoginController {
         stage.show();
     }
 
+    @FXML
+    void pressExitButton(ActionEvent event) {
+        System.exit(0);
+    }
 }

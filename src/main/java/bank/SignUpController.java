@@ -1,15 +1,26 @@
 package bank;
 
+import bank.SQL.DB;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
-public class SignUpController {
+import java.io.IOException;
+import java.net.URL;
+import java.sql.Date;
+import java.util.ResourceBundle;
+
+public class SignUpController implements Initializable {
 
     @FXML
     private DatePicker birthdayPicker;
@@ -48,8 +59,43 @@ public class SignUpController {
     private TextField usernameTextField;
 
     @FXML
-    void pressSingUpButton(ActionEvent event) {
-
+    void pressSingUpButton(ActionEvent event) throws IOException {
+        if (firstnameTextField.getText().equals("") || lastnameTextField.getText().equals("") || usernameTextField.getText().equals("") || passwordField.getText().equals("") || phoneTextField.getText().equals("") || emailTextField.getText().equals("") || idTextField.getText().equals("") || repeatPasswordField.getText().equals("") || genderComboBox.getValue() == null || birthdayPicker.getValue() == null) {
+            errorLabel.setText("please fill all item!");
+        } else if (!passwordField.getText().equals(repeatPasswordField.getText())) {
+            errorLabel.setText("please fill the password correct!");
+        } else {
+            new DB().insertClient(passwordField.getText(), firstnameTextField.getText(), lastnameTextField.getText(), phoneTextField.getText(), emailTextField.getText(), usernameTextField.getText(), Date.valueOf(birthdayPicker.getValue()), genderComboBox.getValue(), idTextField.getText());
+            Stage oldStage = (Stage) singUpButton.getScene().getWindow();
+            oldStage.close();
+            Stage stage = new Stage();
+            FXMLLoader fxmlLoader = new FXMLLoader(Open.class.getResource("MainPage.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            stage.setScene(scene);
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.show();
+        }
     }
 
+    @FXML
+    void pressExitButton(ActionEvent event) {
+        System.exit(0);
+    }
+
+    @FXML
+    void pressLoginButton(ActionEvent event) throws IOException {
+        Stage oldStage = (Stage) singUpButton.getScene().getWindow();
+        oldStage.close();
+        Stage stage = new Stage();
+        FXMLLoader fxmlLoader = new FXMLLoader(Open.class.getResource("Login.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setScene(scene);
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.show();
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        genderComboBox.getItems().addAll("Male", "Female", "Other");
+    }
 }

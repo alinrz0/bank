@@ -1,5 +1,7 @@
 package bank.SQL;
 
+import bank.User.Gender;
+
 import java.sql.*;
 
 public class DB {
@@ -8,10 +10,11 @@ public class DB {
     private String password = "20040502";
 
     private Statement statement;
+    private Connection connection;
 
     public DB() {
         try {
-            Connection connection = DriverManager.getConnection(url, username, password);
+            connection = DriverManager.getConnection(url, username, password);
             statement = connection.createStatement();
 //            ResultSet resultSet = statement.executeQuery("SELECT * FROM client");
 //            while (resultSet.next()) {
@@ -35,5 +38,31 @@ public class DB {
             throw new RuntimeException(e);
         }
         return false;
+    }
+
+    public void insertClient(String password, String firstname , String lastname, String phone, String email, String username, Date birthday, String gender, String national_id_number){
+        String procedureName = "insert_client";
+        String callStatement = "{ call " + procedureName + "(?, ?, ?, ?, ?, ?, ?, ?, ?) }";
+
+        try (CallableStatement callableStatement = connection.prepareCall(callStatement)) {
+            // Set input parameters for the procedure
+            callableStatement.setString(1, password);
+            callableStatement.setString(2, firstname);
+            callableStatement.setString(3, lastname);
+            callableStatement.setString(4, phone);
+            callableStatement.setString(5, email);
+            callableStatement.setString(6, username);
+            callableStatement.setDate(7,  birthday);
+            callableStatement.setString(8, String.valueOf(gender.charAt(0)));
+            callableStatement.setString(9, national_id_number);
+            System.out.println("Executing SQL: " + callableStatement.toString());
+            // Execute the procedure
+            callableStatement.execute();
+
+            // Retrieve output parameters or result sets if needed
+            // Example: int outputValue = callableStatement.getInt(2);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
