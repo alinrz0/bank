@@ -12,6 +12,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.util.Callback;
 
 import java.io.IOException;
 
@@ -49,6 +50,22 @@ public class LoginController {
             oldStage.close();
             Stage stage=new Stage();
             FXMLLoader fxmlLoader = new FXMLLoader(Open.class.getResource("MainPage.fxml"));
+            fxmlLoader.setControllerFactory(new Callback<Class<?>, Object>() {
+
+                @Override
+                public Object call(Class<?> cls) {
+                    if (cls == MainPageController.class) {
+                        return new MainPageController(new DB().getClient(usernameTextField.getText()));
+                    } else
+                        try {
+                            return cls.newInstance();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            throw new RuntimeException(e);
+                        }
+                }
+
+            });
             Scene scene = new Scene(fxmlLoader.load());
             stage.setScene(scene);
             stage.initStyle(StageStyle.UNDECORATED);

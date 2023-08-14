@@ -25,6 +25,23 @@ public class Client{
 
     private String password;
 
+    public Client(String firstname, String lastname, String email, String phone, String nationalIdNumber, float money, Gender gender, Date birthday, int id, String username, String password) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.email = email;
+        this.phone = phone;
+        this.nationalIdNumber = nationalIdNumber;
+        this.money = money;
+        this.gender = gender;
+        this.birthday = birthday;
+        this.id = id;
+        this.username = username;
+        this.password = password;
+    }
+
+    public Client() {
+    }
+
     public int getId() {
         return id;
     }
