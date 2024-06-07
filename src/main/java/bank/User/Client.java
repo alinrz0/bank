@@ -39,6 +39,10 @@ public class Client{
         this.password = password;
     }
 
+    public Client(int id,float money){
+        this.id = id;
+        this.money = money;
+    }
     public Client() {
     }
 

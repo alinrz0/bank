@@ -105,6 +105,11 @@
                               <Font name="System Bold Italic" size="16.0" />
                            </font>
                         </TextField>
+                        <Label fx:id="errorLabelTransfer" alignment="CENTER" layoutX="22.0" layoutY="246.0" prefHeight="27.0" prefWidth="410.0" textFill="#942424">
+                           <font>
+                              <Font name="System Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
                      </children>
                   </AnchorPane>
                </content>

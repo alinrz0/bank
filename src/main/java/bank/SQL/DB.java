@@ -2,8 +2,10 @@ package bank.SQL;
 
 import bank.User.Client;
 import bank.User.Gender;
+import bank.transaction.TransactionType;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class DB {
     private String url = "jdbc:mysql://localhost:3306/sql_bank_managment";
@@ -123,4 +125,34 @@ public class DB {
         return client;
     }
 
+    public ArrayList<String> getAllID() throws SQLException {
+        ArrayList<String> allID=new ArrayList<>();
+        ResultSet resultSet = statement.executeQuery("SELECT client_id FROM sql_bank_managment.client");
+        while (resultSet.next()) {
+            allID.add(String.valueOf(resultSet.getInt("client_id")));
+        }
+        return allID;
+    }
+
+    public void setMoney(Client client) throws SQLException {
+        statement.executeUpdate("UPDATE sql_bank_managment.client SET money="+client.getMoney()+"  WHERE client_id="+client.getId()+"");
+    }
+
+    public float getMoney(int id) throws SQLException {
+        ResultSet resultSet = statement.executeQuery("SELECT money FROM sql_bank_managment.client WHERE client_id="+id+"");
+        while (resultSet.next()) {
+            return resultSet.getFloat("money");
+        }
+        return 0;
+    }
+
+    public void createTransaction(float amount, TransactionType transactionType,int id_1,int id_2) throws SQLException {
+        String transaction="'"+String.valueOf(transactionType)+"'";
+        statement.executeUpdate("INSERT INTO sql_bank_managment.transactions(amount,transaction_type,id_1,id_2) VALUE("+amount+","+transaction+","+id_1+","+id_2+")");
+    }
+
+    public void createTransaction(float amount, TransactionType transactionType,int id_1) throws SQLException {
+        String transaction="'"+String.valueOf(transactionType)+"'";
+        statement.executeUpdate("INSERT INTO sql_bank_managment.transactions(amount,transaction_type,id_1) VALUE("+amount+","+transaction+","+id_1+")");
+    }
 }

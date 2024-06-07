@@ -1,6 +1,8 @@
 package bank;
 
+import bank.SQL.DB;
 import bank.User.Client;
+import bank.transaction.TransactionType;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
 import javafx.event.ActionEvent;
@@ -16,11 +18,14 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class MainPageController implements Initializable {
 
     private Client client;
+
+    private DB db=new DB();
     public MainPageController(Client client) {
         this.client=client;
     }
@@ -44,6 +49,9 @@ public class MainPageController implements Initializable {
 
     @FXML
     private Label errorLabelDeposit;
+
+    @FXML
+    private Label errorLabelTransfer;
 
     @FXML
     private Label errorLabelWithdraw;
@@ -70,17 +78,39 @@ public class MainPageController implements Initializable {
     void pressDoneButtonDeposit(ActionEvent event) {
         try {
             float number = Float.parseFloat(amountTextFieldDeposit.getText());
-            client.setMoney(client.getMoney()+Float.parseFloat(amountTextFieldDeposit.getText()));
+            client.setMoney(client.getMoney()+number);
             amountTextFieldDeposit.clear();
+            db.setMoney(client);
+            db.createTransaction(number, TransactionType.DEPOSIT,client.getId());
             createAlert("deposit done successfully!");
         } catch (NumberFormatException ex) {
             errorLabelDeposit.setText("Invalid input. Please enter an float");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 
     @FXML
     void pressDoneButtonTransfer(ActionEvent event) {
-
+        try {
+            float number = Float.parseFloat(amountTextFieldTransfer.getText());
+            if(number>client.getMoney()){
+                errorLabelTransfer.setText("you do not have enough money!");
+            }else if(!db.getAllID().contains(idTextFieldTransfer.getText())){
+                errorLabelTransfer.setText("this id not exists!");
+            }else {
+                client.setMoney(client.getMoney()-number);
+                db.setMoney(client);
+                db.setMoney(new Client(Integer.parseInt(idTextFieldTransfer.getText()),number+db.getMoney(Integer.parseInt(idTextFieldTransfer.getText()))));
+                db.createTransaction(number, TransactionType.TRANSFER,client.getId(), Integer.parseInt(idTextFieldTransfer.getText()));
+                amountTextFieldTransfer.clear();
+                createAlert("transfer done successfully!");
+            }
+        } catch (NumberFormatException ex) {
+            errorLabelTransfer.setText("Invalid input. Please enter an float");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML
@@ -92,10 +122,14 @@ public class MainPageController implements Initializable {
             }else {
                 client.setMoney(client.getMoney()-Float.parseFloat(amountTextFieldWithdraw.getText()));
                 amountTextFieldWithdraw.clear();
+                db.setMoney(client);
+                db.createTransaction(number, TransactionType.WITHDRAW,client.getId());
                 createAlert("withdraw done successfully!");
             }
         } catch (NumberFormatException ex) {
             errorLabelWithdraw.setText("Invalid input. Please enter an float");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -137,6 +171,5 @@ public class MainPageController implements Initializable {
         Button okButton = (Button) dialog.getDialogPane().lookupButton(okButtonType);
         okButton.setAlignment(Pos.CENTER);
         dialog.showAndWait();
-
     }
 }
